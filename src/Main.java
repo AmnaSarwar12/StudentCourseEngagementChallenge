@@ -1,6 +1,8 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -75,12 +77,25 @@ public class Main {
                 .count();
         System.out.println("Long term Student? " +longTermCount);
 
-         Arrays.stream(student)
+         var teststudent = Arrays.stream(student)
                 .filter(s -> (s.getAge() - s.getAgeEnrolled() > 7) &&
                         (s.getMonthSinceActive() < 12))
                  .filter(s-> !s.HasProgrammingExperience())
                  .limit(5)
-                .forEach(System.out::println);
+                 .toArray(Student[]::new);
+                //.forEach(System.out::println);
+
+        var collecrtorstudent = Arrays.stream(student)
+                .filter(s -> (s.getAge() - s.getAgeEnrolled() > 7) &&
+                        (s.getMonthSinceActive() < 12))
+                .filter(s-> !s.HasProgrammingExperience())
+                .limit(5)
+                .collect(Collectors.toList());
+
+        Collections.shuffle(collecrtorstudent);
+        //.forEach(System.out::println);
+
+
 
 
 

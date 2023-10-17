@@ -90,7 +90,7 @@ public class Student {
         return inActiveMonths;
     }
 
-    public double getPercentComplete(Course CourseCode){
+    public double getPercentComplete(String CourseCode){
         var info = engagementMap.get(CourseCode);
         return (info == null) ? 0: info.getPercentComplete();
     }
